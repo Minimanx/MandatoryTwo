@@ -38,7 +38,7 @@
 					return -1;
 				}
 			});
-		}else{
+		}else {
 			plants.sort((a, b) => {
 				if(a.name < b.name){
 					return 1;
@@ -56,7 +56,16 @@
 
 </script>
 
-<button on:click={sortByPrice}>Sort Price</button>
-<button on:click={sortByName}>Sort Name</button>
+<div class="sort">
+	<button on:click={sortByPrice}>Sort Price</button>
+	<button on:click={sortByName}>Sort Name</button>
+</div>
+
 
 <Cards objects={plants} />
+
+<style>
+	.sort {
+		margin: 2% 0 0 2%;
+	}
+</style>

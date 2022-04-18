@@ -5,26 +5,6 @@ import { db } from "../database/createConnection.js";
 import mailer from "../mailer/mailer.js";
 import crypto from "crypto";
 
-router.post("/login", async (req, res) => {
-    const clientUser = req.body.clientUser;
-    const serverUser = await db.get(`SELECT * FROM users WHERE email = ?`, [clientUser.email]);
-
-    if (serverUser === undefined) {
-        res.status(400).send({message: "Email doesn't exist"});
-        return;
-    }
-
-    if(await bcrypt.compare(clientUser.password, serverUser.password)){
-        const {password, address, passwordToken, ...responseUser} = serverUser;
-        req.session.loggedIn = true;
-        req.session.userID = serverUser.id;
-        req.session.email = serverUser.email;
-        res.status(200).send(responseUser);
-    } else{
-        res.status(401).send({ message: "Password doesn't match" });
-    }
-});
-
 router.get("/auth/logout/:id", (req, res) => {
     if(parseInt(req.params.id) === req.session.userID){
         req.session.destroy();
@@ -48,6 +28,26 @@ router.get("/api/resetpassword/:token", async (req, res) => {
     }
     
     res.status(200).send({ data: email });
+});
+
+router.post("/login", async (req, res) => {
+    const clientUser = req.body.clientUser;
+    const serverUser = await db.get(`SELECT * FROM users WHERE email = ?`, [clientUser.email]);
+
+    if (serverUser === undefined) {
+        res.status(400).send({message: "Email doesn't exist"});
+        return;
+    }
+
+    if(await bcrypt.compare(clientUser.password, serverUser.password)){
+        const {password, address, passwordToken, ...responseUser} = serverUser;
+        req.session.loggedIn = true;
+        req.session.userID = serverUser.id;
+        req.session.email = serverUser.email;
+        res.status(200).send(responseUser);
+    } else{
+        res.status(401).send({ message: "Password doesn't match" });
+    }
 });
 
 router.post("/forgotpassword", async (req, res) => {

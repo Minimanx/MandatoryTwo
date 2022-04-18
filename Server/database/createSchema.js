@@ -46,7 +46,7 @@ if(firstTime) {
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Dragon Scale', 'Such a nice plant!! Wow!', '39.00', 'High', 'Medium', 'dragonscale.jpg', 0)`);
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Yucatan Princess', 'Such a nice plant!! Wow!', '65.90', 'Medium', 'Low', 'yucatanprincess.jpg', 0)`);
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Placeholder', 'Placeholder description', '10.00', 'Low', 'Low', 'placeholder.jpg', 0)`);
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
         db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Placeholder', 'Placeholder description', '10.00', 'Low', 'Low', 'placeholder.jpg', 0)`);
     }
 }

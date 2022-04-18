@@ -15,7 +15,7 @@
 	import OrderComplete from "./pages/OrderComplete.svelte";
 </script>
 
-<SvelteToast />
+<SvelteToast options={{ reversed: true, intro: { x: 192 } }} />
 
 <Router>
 	<header>
@@ -31,9 +31,19 @@
 			</div>
 			{:else}
 			<div class="account">
-				{$user.name}
-				<Link to="/cart">Cart</Link>
-				<Link to="/account">Account</Link>
+				<div class="name">
+					{$user.name}
+				</div>
+				<Link to="/cart">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+				  	</svg>
+				</Link>
+				<Link to="/account">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+				  </svg>
+				</Link>
 			</div>
 			{/if}
 		</nav>
@@ -58,6 +68,11 @@
 </Router>
 
 <style>
+	.h-6 {
+		height: 22px;
+		vertical-align: bottom;
+	}
+
 	.logo {
 		flex-basis: 40%;
 	}
@@ -67,6 +82,7 @@
 		gap: 35px;
 		flex-basis: 40%;
 		justify-content: flex-end;
+		align-items: center;
 	}
 
 	main {
@@ -93,5 +109,14 @@
     	justify-content: space-between;
     	align-items: center;
 		padding: 5px 35px 5px 35px;
+	}
+
+	@media screen and (max-width: 850px) {
+  		.name {
+			  display: none;
+  		}
+		nav {
+			padding: 15px 10px 15px 10px;
+		}
 	}
 </style>

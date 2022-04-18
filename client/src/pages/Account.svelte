@@ -24,7 +24,8 @@
         }
     }
 </script>
+<div class="simplecontainer">
+    <h1>{clientUser.name}</h1>
 
-<h1>{clientUser.name}</h1>
-
-<button on:click={logout}>Logout</button>
+    <button on:click={logout}>Logout</button>
+</div>

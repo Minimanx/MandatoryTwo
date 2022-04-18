@@ -13,7 +13,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "postinstall": "npm run start --prefix ./client"
+    "client": "npm run start --prefix ../client"
   },
   "type": "module",
   "author": "",

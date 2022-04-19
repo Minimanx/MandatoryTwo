@@ -32,9 +32,14 @@
         };
 
         const response = await fetch("/signup", settings);
+        const data = await response.json();
+
+        if(response.status === 400) {
+          error(data.message);
+        }
 
         if(response.status === 200) {
-            navigate("/login");
+          navigate("/login");
         }
     }
 </script>

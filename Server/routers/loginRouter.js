@@ -32,7 +32,7 @@ router.get("/api/resetpassword/:token", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const clientUser = req.body.clientUser;
-    const serverUser = await db.get(`SELECT * FROM users WHERE email = ?`, [clientUser.email]);
+    const serverUser = await db.get(`SELECT * FROM users WHERE email = ?`, [clientUser.email.toLowerCase()]);
 
     if (serverUser === undefined) {
         res.status(400).send({message: "Email doesn't exist"});

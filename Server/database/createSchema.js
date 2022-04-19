@@ -37,10 +37,6 @@ db.exec(`CREATE TABLE IF NOT EXISTS carts (
 )`);
 
 if(firstTime) {
-    db.run(`INSERT INTO users (email, name, address, password) VALUES ('123@abc.com', 'Johan Schwennesen', 'Citronvej 4', '$2b$12$flyZd8du/MF2kK4EbWqKTOB.o331Obzmd8LbpN1dg/4LOq56cwCqu')`);
-    db.run(`INSERT INTO users (email, name, address, password) VALUES ('abc@123.com', 'Carl Cederskog', 'Citronvej 4', '$2b$12$TphLhXFv/5uhhF4kvHjL/.Tnz/u7nREiSKplof4lzoSfDENskQq8q')`);
-    db.run(`INSERT INTO users (email, name, address, password) VALUES ('johanschwennesen@gmail.com', 'Carl Cederskog', 'Citronvej 4', '$2b$12$TphLhXFv/5uhhF4kvHjL/.Tnz/u7nREiSKplof4lzoSfDENskQq8q')`);
-
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Arabica', 'Such a nice plant!! Wow!', '49.50', 'Low', 'High', 'arabica.jpg', 0)`);
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Black Velvet', 'Such a nice plant!! Wow!', '59.50', 'Medium', 'Low', 'blackvelvet.jpg', 0)`);
     db.run(`INSERT INTO products (name, description, price, water, sun, image, popularity) VALUES ('Dragon Scale', 'Such a nice plant!! Wow!', '39.00', 'High', 'Medium', 'dragonscale.jpg', 0)`);

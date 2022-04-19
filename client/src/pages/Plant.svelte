@@ -78,7 +78,7 @@
 			align-items: center;
 		  }
   	}
-	@media screen and (max-width: 1400px) {
+	@media screen and (max-width: 1200px) {
   		.container {
 			width: 70%;
 		  }

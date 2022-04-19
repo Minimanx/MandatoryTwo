@@ -11,8 +11,15 @@ router.get("/auth/account", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
+    if(req.body.password.length < 8) {
+        res.status(400).send({ message: "Password is too short" });
+        return;
+    }
+    if(!/\S+@\S+\.\S+/.test(req.body.email)){
+        res.status(400).send({ message: "Email must be valid" });
+        return;
+    }
     const emailExists = await db.get(`SELECT email FROM users WHERE email = ?`, [req.body.email.toLowerCase()]);
-    console.log(emailExists);
     if(emailExists === undefined) {
         const hashedPassword = await bcrypt.hash(req.body.password, 12);
         await db.run(`INSERT INTO users(email, name, address, password) VALUES(?, ?, ?, ?)`, [req.body.email.toLowerCase(), req.body.name, req.body.address, hashedPassword]);

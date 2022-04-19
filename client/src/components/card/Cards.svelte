@@ -1,7 +1,6 @@
 <script>
   import { Link } from "svelte-navigator";
   export let objects;
-
 </script>
 
 <div class="row">
@@ -11,9 +10,8 @@
           <div class="card">
               <img src="images/{object.image}" alt="Avatar" style="width:100%">
               <div class="container">
-              <h5>{object.name}</h5>
-              <p><b>{object.price.toFixed(2)} DKK</b></p>
-              
+                <h5>{object.name}</h5>
+                <p><b>{object.price.toFixed(2)} DKK</b></p>
               </div>
           </div>
         </Link>

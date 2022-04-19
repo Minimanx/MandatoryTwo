@@ -8,10 +8,9 @@ let password = "";
 let forgotEmail = "";
 
 async function validateLogin() {
-  if (email == "") {
+  if(email == "") {
     error("Email must be filled out");
-  }
-  else {
+  } else {
     const settings = {
         method: "POST",
         headers: {
@@ -29,15 +28,15 @@ async function validateLogin() {
     const response = await fetch("/login", settings);
 		const data = await response.json();
 
-    if(response.status === 401){
+    if(response.status === 401) {
       error("Wrong Password");
       return;
     }
-    if(response.status === 400){
+    if(response.status === 400) {
       error("Wrong Email");
       return;
     }
-    if(response.status === 200){
+    if(response.status === 200) {
       user.set({loggedIn: true, id: data.id, name: data.name, email: data.email});
       navigate("/");
     }
@@ -45,9 +44,9 @@ async function validateLogin() {
 }
 
 async function forgotPassword() {
-  if (forgotEmail == "") {
+  if(forgotEmail == "") {
     error("Email must be filled out");
-  }else {
+  } else {
     const settings = {
         method: "POST",
         headers: {

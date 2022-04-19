@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
         res.status(400).send({ message: "Password is too short" });
         return;
     }
-    if(!/\S+@\S+\.\S+/.test(req.body.email)){
+    if(!/\S+@\S+\.\S+/.test(req.body.email)) {
         res.status(400).send({ message: "Email must be valid" });
         return;
     }
@@ -25,7 +25,7 @@ router.post("/signup", async (req, res) => {
         await db.run(`INSERT INTO users(email, name, address, password) VALUES(?, ?, ?, ?)`, [req.body.email.toLowerCase(), req.body.name, req.body.address, hashedPassword]);
         mailer("Account Created", "<h1>You created an account!<h1>", req.body.email);
         res.status(200).send({});
-    }else {
+    } else {
         res.status(400).send({ message: "Email already exists" });
     }
     

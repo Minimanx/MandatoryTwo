@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
-	import { navigate } from "svelte-navigator";
 	import { user } from "../stores/userStore.js";
 	import { error, success } from "../components/toasts/toastThemes.js";
 
     export let id;
+
 	let plant = {};
 	
 	onMount(async () => {
@@ -28,7 +28,8 @@
 
 			await fetch("/auth/cart", settings);
 			success("Product added to cart");
-		}else {
+
+		} else {
 			error("You must be logged in to use the cart");
 		}
 	}
@@ -49,7 +50,6 @@
 			<button on:click={addToCart}>Add To Cart</button>
 		</div>
 	</div>
-	
 </div>
 
 <style>

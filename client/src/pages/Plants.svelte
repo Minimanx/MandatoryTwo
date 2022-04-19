@@ -13,13 +13,13 @@
 	let priceSortOrder = true;
 
 	function sortByPrice() {
-		if(priceSortOrder){
+		if(priceSortOrder) {
 			plants.sort((a, b) => {
-				return  b.price - a.price;
+				return b.price - a.price;
 			});
-		}else{
+		} else {
 			plants.sort((a, b) => {
-				return   a.price - b.price;
+				return a.price - b.price;
 			});
 		}
 		priceSortOrder = !priceSortOrder;
@@ -29,26 +29,25 @@
 	let nameSortOrder = true;
 
 	function sortByName() {
-		if(nameSortOrder){
+		if(nameSortOrder) {
 			plants.sort((a, b) => {
-				if(a.name > b.name){
+				if(a.name > b.name) {
 					return 1;
 				}
-				if(a.name < b.name){
+				if(a.name < b.name) {
 					return -1;
 				}
 			});
-		}else {
+		} else {
 			plants.sort((a, b) => {
-				if(a.name < b.name){
+				if(a.name < b.name) {
 					return 1;
 				}
-				if(a.name > b.name){
+				if(a.name > b.name) {
 					return -1;
 				}
 			});
 		}
-
 
 		nameSortOrder = !nameSortOrder;
 		plants = plants;
@@ -60,7 +59,6 @@
 	<button on:click={sortByPrice}>Sort Price</button>
 	<button on:click={sortByName}>Sort Name</button>
 </div>
-
 
 <Cards objects={plants} />
 

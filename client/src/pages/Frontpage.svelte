@@ -1,5 +1,4 @@
 <script>
-    import { user } from "../stores/userStore.js";
     import { navigate } from "svelte-navigator";
     import { onMount } from "svelte";
     import Cards from "../components/card/Cards.svelte";
@@ -13,7 +12,6 @@
     });
 </script>
 
-
 <div class="container">
     <img src="images/frontpage.jpg" alt="Cover">
     <button on:click="{() => navigate("/plants")}">Explore</button>
@@ -22,7 +20,6 @@
 <h2>Popular products</h2>
 
 <Cards objects={plants} />
-
 
 <style>
 h2 {
@@ -41,6 +38,7 @@ h2 {
   object-fit: cover;
   object-position: 0% 60%;
 }
+
 @media only screen and (max-width: 800px) {
     .container img {
     height: 300px;

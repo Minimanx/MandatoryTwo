@@ -1,6 +1,6 @@
 <script>
     import { navigate } from "svelte-navigator";
-    import { error, success } from "../components/toasts/toastThemes.js";
+    import { error } from "../components/toasts/toastThemes.js";
     
     let name = "";
     let address = "";

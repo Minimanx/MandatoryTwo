@@ -88,6 +88,7 @@
 	main {
 		flex: 1;
 	}
+	
 	nav {
 		display: flex;
 		justify-content: space-between;

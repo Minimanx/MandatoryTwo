@@ -9,7 +9,7 @@
 		const { data } = await response.json();
 		cartProducts = data;
 
-        if(response.status === 403){
+        if(response.status === 403) {
             window.location.href = "/login";
         }
     }
@@ -47,7 +47,7 @@
     async function checkout() {
         const response = await fetch("/auth/cart/checkout");
         
-        if(response.status === 200){
+        if(response.status === 200) {
             navigate("/ordercomplete");
         }
     }
@@ -68,7 +68,8 @@
                         <button on:click={() => removeFromCart(product.id)}>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                            </svg></button>
+                            </svg>
+                        </button>
                     </td>
                     <td>
                         <h4>{product.amount}</h4>
@@ -77,7 +78,8 @@
                         <button on:click={() => addToCart(product.id)}>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg></button>
+                            </svg>
+                        </button>
                     </td>
                     <td>
                         <h4>{(parseFloat(product.price) * product.amount).toFixed(2)}</h4>
@@ -114,11 +116,13 @@
 h4 {
     padding: 0px 3px;
 }
+
 td {
     padding: 18px 0px;
     border-bottom: 1px solid black;
     text-align: center;
 }
+
 .checkout {
     padding: 10px 18px;
 }
@@ -136,7 +140,6 @@ table {
 button {
     padding: 4px 12px;
 }
-
 
 .container {
   width: 600px;

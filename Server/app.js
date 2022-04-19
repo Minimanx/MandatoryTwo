@@ -16,7 +16,7 @@ app.use(session({
 }));
 
 function auth(req, res, next) {
-    if (req.session.loggedIn === true) {
+    if(req.session.loggedIn === true) {
         next();
     } else {
         res.status(403).send({ message: "You must log in to view this site" });

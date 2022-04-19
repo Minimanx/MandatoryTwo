@@ -6,7 +6,6 @@ import mailer from "../mailer/mailer.js";
 
 router.get("/auth/cart", async (req, res) => {
     const cart = await db.all(`SELECT carts.amount, products.id, products.name, products.price, products.image FROM carts INNER JOIN products ON products.id=carts.productID WHERE userID = ?`, [req.session.userID]);
-    
     res.status(200).send({ data: cart });
 });
 
@@ -36,9 +35,9 @@ router.get("/auth/cart/checkout", async (req, res) => {
 router.post("/auth/cart", async (req, res) => {
     const product = await db.get(`SELECT * FROM carts WHERE userID = ? AND productID = ?`, [req.session.userID, req.body.productID]);
 
-    if(product !== undefined){
+    if(product !== undefined) {
         await db.run(`UPDATE carts SET amount = ? WHERE userID = ? AND productID = ?`, [++product.amount, req.session.userID, req.body.productID]);
-    }else {
+    } else {
         await db.run(`INSERT INTO carts(amount, userID, productID) VALUES(?, ?, ?)`, [1, req.session.userID, req.body.productID]);
     }
 
@@ -47,16 +46,15 @@ router.post("/auth/cart", async (req, res) => {
 
 router.delete("/auth/cart/:id/all", async (req, res) => {
     await db.run(`DELETE FROM carts WHERE productID = ? AND userID = ?`, [req.params.id, req.session.userID]);
-
     res.status(200).send({ message: "Product succesfully removed from cart" });
 });
 
 router.delete("/auth/cart/:id", async (req, res) => {
     const product = await db.get(`SELECT * FROM carts WHERE productID = ? AND userID = ?`, [req.params.id, req.session.userID]);
 
-    if(product.amount === 1){
+    if(product.amount === 1) {
         await db.run(`DELETE FROM carts WHERE productID = ? AND userID = ?`, [req.params.id, req.session.userID]);
-    }else {
+    } else {
         await db.run(`UPDATE carts SET amount = ? WHERE userID = ? AND productID = ?`, [--product.amount, req.session.userID, req.params.id]);
     }
     
